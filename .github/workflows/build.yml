@@ -1,0 +1,17 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build placeholder
+        run: echo "Build workflow ready"
