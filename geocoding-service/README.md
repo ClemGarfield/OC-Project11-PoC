@@ -4,7 +4,8 @@ Microservice responsable de la transformation d'adresses en coordonnées géogra
 
 ## Responsabilité
 
-Transformer une adresse postale en latitude et longitude afin de permettre les traitements de calcul d'itinéraire et de recommandation.
+Transformer une adresse postale en latitude et longitude afin de permettre les traitements de calcul d'itinéraire et de
+recommandation.
 
 ## Entrée
 
