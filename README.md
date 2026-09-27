@@ -4,7 +4,6 @@ Preuve de concept du Projet 11 basée sur une architecture microservices.
 
 ## Composants
 
-- geocoding-service
 - routing-service
 - hospital-service
 - recommendation-service
