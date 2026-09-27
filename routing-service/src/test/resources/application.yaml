@@ -1,10 +1,11 @@
 spring:
   application:
     name: routing-service
+
 graphhopper:
   osm-file: data/osm/united-kingdom-260911.osm.pbf
   graph-location: data/graphhopper-cache
 
 logging:
   level:
-    org.springframework.jdbc.datasource.init: DEBUG
+    root: WARN
