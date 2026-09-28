@@ -31,3 +31,26 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# IntelliJ
+.idea/
+*.iml
+
+# Maven
+target/
+
+# JaC*Co
+jacoco.exec
+
+# Reports
+site*
+*urefire-re*orts/
+
+# GraphHopper
+graph-cache/
+*raphhopper*cache/
+
+# OSM
+*.osm.pbf
+
+# Logs**.log
