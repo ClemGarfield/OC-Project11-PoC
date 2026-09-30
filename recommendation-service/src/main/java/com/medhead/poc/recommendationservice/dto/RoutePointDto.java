@@ -1,10 +1,11 @@
 package com.medhead.poc.recommendationservice.dto;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class RoutePointDto
 {
     private Double latitude;
