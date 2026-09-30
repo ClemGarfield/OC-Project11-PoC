@@ -27,7 +27,7 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/${{ github.repository }}/recommendation-service:latest
-            ghcr.io/${{ github.repository }}/hospital-service:latest
-            ghcr.io/${{ github.repository }}/bed-service:latest
-            ghcr.io/${{ github.repository }}/routing-service:latest
+            ghcr.io/clemgarfield/oc-project11-poc/recommendation-service:latest
+            ghcr.io/clemgarfield/oc-project11-poc/hospital-service:latest
+            ghcr.io/clemgarfield/oc-project11-poc/bed-service:latest
+            ghcr.io/clemgarfield/oc-project11-poc/routing-service:latest
