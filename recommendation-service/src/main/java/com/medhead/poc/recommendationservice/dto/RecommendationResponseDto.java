@@ -6,7 +6,8 @@ public record RecommendationResponseDto(
         String hospitalName,
         Long specialtyId,
         Double distance,
-        Integer availableBeds
-
+        Integer availableBeds,
+        Long reservationId,
+        String reservationStatus
 ) {
 }

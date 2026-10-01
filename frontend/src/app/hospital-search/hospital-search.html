@@ -1,0 +1,84 @@
+<div class="nhs-header">
+  <h1>NHS Hospital Finder (PoC)</h1>
+  <p>Find the nearest hospital by location and specialty.</p>
+</div>
+
+<div class="nhs-container">
+  <div class="nhs-panel">
+    <h2>Search parameters</h2>
+
+    <!-- Address -->
+    <table class="tbl">
+      <tr>
+        <td class="label-cell">Address</td>
+
+        <td class="input-cell">
+          <input type="text" [(ngModel)]="address" placeholder="Enter an address" />
+        </td>
+
+        <!-- Loupe -->
+        <td class="btn-cell">
+          <button class="glyph" (click)="searchAddress()">🔍</button>
+        </td>
+
+        <!-- GPS -->
+        <td class="btn-cell">
+          <button class="glyph" (click)="useBrowserLocation()">📍</button>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Specialty -->
+    <table class="tbl">
+      <tr>
+        <td class="label-cell">Specialty</td>
+
+        <td class="input-cell">
+          <select [(ngModel)]="specialty">
+            <option [ngValue]="null" disabled>Select a specialty</option>
+            <option *ngFor="let s of specialties" [ngValue]="s.id">
+              {{ s.name }}
+            </option>
+          </select>
+        </td>
+
+        <td class="btn-cell">
+          <button class="primary" (click)="searchHospital()">Search</button>
+        </td>
+      </tr>
+    </table>
+
+    <div *ngIf="error" class="error">{{ error }}</div>
+
+    <!-- Result -->
+    <div class="nhs-result" *ngIf="result !== null">
+      <h3>{{ result.hospitalName }}</h3>
+
+      <p>
+        <strong>Distance :</strong>
+        {{ result.distance / 1000 | number: '1.1-1' }} km
+      </p>
+
+      <p>
+        <strong>Estimated time :</strong>
+        {{ result.travelTime / 60000 | number: '1.0-0' }} min
+      </p>
+
+      <p>
+        <strong>Bed reserved :</strong>
+        {{ result.reservationStatus }}
+      </p>
+
+      <p>
+        <strong>Available beds :</strong>
+        {{ result.availableBeds }}
+      </p>
+    </div>
+
+    <!-- Map -->
+    <div class="nhs-map-panel">
+      <h2>Map</h2>
+      <div id="map"></div>
+    </div>
+  </div>
+</div>

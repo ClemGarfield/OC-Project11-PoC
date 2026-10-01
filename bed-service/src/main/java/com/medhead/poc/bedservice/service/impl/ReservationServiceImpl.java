@@ -2,6 +2,8 @@ package com.medhead.poc.bedservice.service;
 
 import com.medhead.poc.bedservice.dto.ReservationRequestDto;
 import com.medhead.poc.bedservice.dto.ReservationResponseDto;
+import com.medhead.poc.bedservice.event.BedReservedEvent;
+import com.medhead.poc.bedservice.event.BedReservedEventPublisher;
 import com.medhead.poc.bedservice.mapper.ReservationMapper;
 import com.medhead.poc.bedservice.model.Reservation;
 import com.medhead.poc.bedservice.model.ReservationStatus;
@@ -12,17 +14,28 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
-public class ReservationServiceImpl implements ReservationService {
+public class ReservationServiceImpl
+        implements ReservationService {
 
     private final ReservationRepository reservationRepository;
 
+    private final BedReservedEventPublisher
+            bedReservedEventPublisher;
+
     public ReservationServiceImpl(
-            ReservationRepository reservationRepository) {
-        this.reservationRepository = reservationRepository;
+            ReservationRepository reservationRepository,
+            BedReservedEventPublisher bedReservedEventPublisher) {
+
+        this.reservationRepository =
+                reservationRepository;
+
+        this.bedReservedEventPublisher =
+                bedReservedEventPublisher;
     }
 
     @Override
     public List<ReservationResponseDto> getAllReservations() {
+
         return reservationRepository.findAll()
                 .stream()
                 .map(ReservationMapper::toResponseDto)
@@ -30,7 +43,9 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public ReservationResponseDto getReservation(Long id) {
+    public ReservationResponseDto getReservation(
+            Long id) {
+
         return reservationRepository.findById(id)
                 .map(ReservationMapper::toResponseDto)
                 .orElse(null);
@@ -50,17 +65,39 @@ public class ReservationServiceImpl implements ReservationService {
         reservation.setCreatedAt(
                 LocalDateTime.now());
 
-        return ReservationMapper.toResponseDto(
+        Reservation saved =
                 reservationRepository.save(
-                        reservation));
+                        reservation);
+
+        bedReservedEventPublisher.publish(
+                new BedReservedEvent(
+                        saved.getId(),
+                        reservationRequestDto.bedId()
+                )
+        );
+
+        System.out.println(
+                "EVENT BedReserved : "
+                        + new BedReservedEvent(
+                        saved.getId(),
+                        reservationRequestDto.bedId()
+                )
+        );
+
+        return ReservationMapper.toResponseDto(
+                saved);
     }
 
     @Override
-    public void cancelReservation(Long id) {
+    public void cancelReservation(
+            Long id) {
+
         reservationRepository.findById(id)
                 .ifPresent(reservation -> {
+
                     reservation.setStatus(
                             ReservationStatus.CANCELLED);
+
                     reservationRepository.save(
                             reservation);
                 });

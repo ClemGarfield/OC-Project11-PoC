@@ -8,4 +8,8 @@ public interface HospitalService {
 
     List<HospitalDto> getHospitalsBySpecialty(Long specialtyId);
 
+    HospitalDto getHospitalById(Long id);
+
+    void decrementCapacity(Long hospitalId, Long specialtyId);
+
 }
