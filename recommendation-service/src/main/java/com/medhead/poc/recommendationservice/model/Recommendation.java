@@ -3,8 +3,6 @@ package com.medhead.poc.recommendationservice.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDateTime;
-
 @Entity
 @Table(name = "recommendation")
 @Getter
@@ -28,8 +26,10 @@ public class Recommendation {
 
     private Double distanceKm;
 
+    private Long reservationId;
+
     @Enumerated(EnumType.STRING)
     private RecommendationStatus status;
 
-    private LocalDateTime createdAt;
+    private String reservationStatus;
 }

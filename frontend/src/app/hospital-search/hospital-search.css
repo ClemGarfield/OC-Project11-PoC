@@ -1,0 +1,124 @@
+.nhs-header {
+  background: #005eb8;
+  color: #fff;
+  padding: 16px 24px;
+  border-bottom: 4px solid #003087;
+}
+
+.nhs-container {
+  display: flex;
+  gap: 16px;
+  padding: 16px 24px;
+}
+
+.nhs-panel, .nhs-map-panel {
+  flex: 1;
+  background: #f5f5f5;
+  border: 1px solid #d8d8d8;
+  padding: 16px;
+}
+
+/* TABLEAU INVISIBLE */
+.tbl {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 16px;
+}
+
+.tbl td {
+  vertical-align: top;
+  padding: 4px;
+}
+
+/* Label aligné */
+.label-cell {
+  width: 120px;
+  font-weight: bold;
+  padding-top: 10px;
+}
+
+/* Champ de saisie + combo élargis */
+.input-cell input,
+.input-cell select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #b1b4b6;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+/* Boutons glyphes + Search : même largeur */
+.btn-cell {
+  width: 70px;
+  text-align: center;
+}
+
+.glyph,
+.primary {
+  width: 70px;
+  padding: 10px 0;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-size: 1rem;
+}
+
+/* Boutons bleus */
+.glyph {
+  background: #005eb8;
+}
+
+.glyph:hover {
+  background: #003087;
+}
+
+/* Bouton Search vert */
+.primary {
+  background: #007f3b;
+}
+
+.primary:hover {
+  background: #005f2a;
+}
+
+/* Suggestions */
+.suggestions {
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0;
+  border: 1px solid #d8d8d8;
+  background: white;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.suggestions li {
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.suggestions li:hover {
+  background: #e6f0ff;
+}
+
+/* Carte */
+#map {
+  width: 100%;
+  height: 500px;
+  border: 1px solid #b1b4b6;
+}
+
+/* Erreur */
+.error {
+  color: #d4351c;
+  margin-top: 8px;
+}
+
+/* Résultat */
+.nhs-result {
+  margin-top: 16px;
+  padding: 12px;
+  background: #fff;
+  border-left: 4px solid #005eb8;
+}

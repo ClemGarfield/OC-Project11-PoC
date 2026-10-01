@@ -35,7 +35,9 @@ public final class RecommendationMapper {
                 null,
                 recommendation.getSpecialtyId(),
                 recommendation.getDistanceKm(),
-                null
+                null,
+                recommendation.getReservationId(),
+                recommendation.getReservationStatus()
         );
     }
 }
